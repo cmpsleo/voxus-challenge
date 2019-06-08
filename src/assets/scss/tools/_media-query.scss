@@ -1,0 +1,41 @@
+/*
+  @author Léo Campos
+  @date 01/06/2019
+  @examples
+    .john-doe {
+      @include media-query('lessThan', small) { // do something }
+    }
+    
+    .lorem-ipsum {
+      @include media-query('between', small, large) { // do something }
+    }
+*/
+
+/* Breakpoint values */
+$breakpoints: (
+  huge: 1440,
+  large: 1170,
+  medium: 768,
+  small: 450
+);
+
+/* A simple function to return easier the values in breakpoints object */
+@function breakpoint($value) {
+  @return map-get($breakpoints, $value);
+};
+
+/* Here's the magic :P */
+@mixin media-query($query, $size, $max-size: '') {
+  @if($query == 'lessThan') {
+    @media(max-width: breakpoint($size) - 1 + 'px') { @content; }
+  };
+
+  @if($query == 'greaterThan') {
+    @media(min-width: breakpoint($size) + 'px') { @content; }
+  };
+
+  @if($query == 'between') {
+    @media(min-width: breakpoint($size) + 1 + 'px')
+      and (max-width: breakpoint($max-size) - 1 + 'px') { @content; }
+  };
+};
