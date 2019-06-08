@@ -1,16 +1,16 @@
 <template>
   <header class="the-header">
-    <figure class="logo">
-      <img class="image" src="@/assets/images/logos/voxus-primary.svg" title="Voxus - Mídia  programática para e-commerces" alt="Voxus - Mídia  programática para e-commerces">
-    </figure>
+    <div class="wrap">
+      <figure class="logo">
+        <img class="image" src="@/assets/images/logos/voxus-primary.svg" title="Voxus - Mídia  programática para e-commerces" alt="Voxus - Mídia  programática para e-commerces">
+      </figure>
+    </div>
   </header>
 </template>
 
 <style lang="scss" scoped>
   .the-header {
-    width: 100%;
     height: 3.125rem;
-    padding: 0 1rem;
     margin-bottom: 3.125rem;
 
     display: flex;
@@ -19,13 +19,17 @@
     background-color: #FFF;
     border-bottom: 1px solid rgba(45, 58, 64, .1);
 
-    @include media-query('greaterThan', large) {
-      padding: 0 12rem;
-      margin-bottom: 3.75rem;
-    }
+    > .wrap {
+      @include media-query('greaterThan', large) {
+        width: 940px;
+        margin: 0 auto;
+      }
 
-    > .logo {
-      > .image { height: 1rem }
+      @include media-query('lessThan', large) { padding: 0 1rem; }
+
+      > .logo {
+        > .image { height: 1rem }
+      }
     }
   }
 </style>
