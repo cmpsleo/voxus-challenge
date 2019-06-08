@@ -42,7 +42,7 @@
 
     > .links {
       > .item {
-        transition: .3s;
+        transition: color .3s;
         font-size: .875rem;
         color: map-get($gray-color, normal);
         
@@ -51,7 +51,7 @@
 
           &:hover {
             color: $primary-color;
-            transition: .3s;
+            transition: color .3s;
           }
         }
 
