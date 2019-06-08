@@ -1,7 +1,7 @@
 <template>
   <footer class="the-footer">
     <figure class="logo">
-      <img class="image" src="@/assets/images/logo-voxus-secondary.svg" title="Voxus - Mídia  programática para e-commerces" alt="Voxus - Mídia  programática para e-commerces">
+      <img class="image" src="@/assets/images/logos/voxus-secondary.svg" title="Voxus - Mídia  programática para e-commerces" alt="Voxus - Mídia  programática para e-commerces">
     </figure>
 
     <nav class="links">

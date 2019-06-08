@@ -1,7 +1,7 @@
 <template>
   <header class="the-header">
     <figure class="logo">
-      <img class="image" src="@/assets/images/logo-voxus.svg" title="Voxus - Mídia  programática para e-commerces" alt="Voxus - Mídia  programática para e-commerces">
+      <img class="image" src="@/assets/images/logos/voxus-primary.svg" title="Voxus - Mídia  programática para e-commerces" alt="Voxus - Mídia  programática para e-commerces">
     </figure>
   </header>
 </template>
