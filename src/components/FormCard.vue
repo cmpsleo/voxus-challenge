@@ -129,6 +129,7 @@ import { mapState } from 'vuex'
 
 import { mask } from 'vue-the-mask'
 import Multiselect from 'vue-multiselect'
+import VeeValidate from '@/plugins/VeeValidate.js'
 
 import BaseInput from './BaseInput'
 
@@ -173,17 +174,13 @@ export default {
   computed: mapState(['submitted']),
   methods: {
     submitForm() {
-      // this.$store.dispatch('submitForm')
-
-      // this.wasSubmitted = true
-
-      // console.log(this.form)
-      
       this.$validator.validate().then(valid => {
         if(valid) {
-          console.log('yep')
-        } else {
-          console.log('nop')
+          this.$store.dispatch('submitForm')
+
+          this.wasSubmitted = true
+
+          console.log(this.form)
         }
       })
     }
