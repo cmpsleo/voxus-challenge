@@ -6,6 +6,8 @@
       <TheHeading />
 
       <FormCard />
+
+      <FormTerms />
     </section>
     
     <TheFooter />
@@ -17,13 +19,15 @@ import TheHeader from './components/TheHeader'
 import TheFooter from './components/TheFooter'
 import TheHeading from './components/TheHeading'
 import FormCard from './components/FormCard'
+import FormTerms from './components/FormTerms'
 
 export default {
   components: {
     TheHeader,
     TheFooter,
     TheHeading,
-    FormCard
+    FormCard,
+    FormTerms
   }
 }
 </script>
