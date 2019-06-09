@@ -1,0 +1,71 @@
+.select-flag {
+  %flag-icon {
+    > i {
+      width: 1rem;
+      height: 1rem;
+      display: inline-block;
+
+      background: {
+        repeat: no-repeat;
+        position: center;
+        size: contain;
+      };
+
+      &.flag-brazil { background-image: url('~@/assets/images/flags/brazil.svg'); }
+
+      &.flag-denmark { background-image: url('~@/assets/images/flags/denmark.svg'); }
+
+      &.flag-spain { background-image: url('~@/assets/images/flags/spain.svg'); }
+
+      &.flag-united-kingdom { background-image: url('~@/assets/images/flags/united-kingdom.svg'); }
+
+      &.flag-united-states { background-image: url('~@/assets/images/flags/united-states.svg'); }
+    }
+  }
+
+  > .multiselect {
+    > .multiselect__select {
+      width: 32px;
+
+      &:before { border-width: 3px 3px 0; }
+    }
+
+    > .multiselect__tags {
+      padding: 9px 26px 0 1rem;
+
+      border-radius: 3px 0 0 3px;
+      border-right-color: transparent;
+
+      > .multiselect__single {
+        @extend %flag-icon;
+
+        > i { height: 25px; }
+      }
+    }
+
+    > .multiselect__content-wrapper {
+      min-width: 180px;
+
+      > .multiselect__content {
+        > .multiselect__element {
+          > .multiselect__option  {
+            @extend %flag-icon;
+
+            display: flex;
+            align-items: center;
+
+            > span {
+              margin-left: .3rem;
+              
+              font-size: .75rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  > .form-group {
+    > .field { border-radius: 0 3px 3px 0; }
+  }
+}

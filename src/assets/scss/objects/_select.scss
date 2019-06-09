@@ -3,7 +3,11 @@
 
   color: map-get($gray-color, dark);
 
-  > .multiselect__select { height: 42px; }
+  > .multiselect__select {
+    height: 42px;
+
+    &:before { border-color: map-get($gray-color, dark) transparent transparent; }
+  }
 
   > .multiselect__tags {
     min-height: 44px;
@@ -21,6 +25,20 @@
       line-height: 26px;
       margin-bottom: 0;
       padding-left: 0;
+    }
+  }
+
+  > .multiselect__content-wrapper {
+    > .multiselect__content {
+      > .multiselect__element {
+        > .multiselect__option  {
+          &.multiselect__option--highlight {
+            background: map-get($green-color, normal);
+
+            &:after { background: map-get($green-color, normal); }
+          }
+        }
+      }
     }
   }
 }

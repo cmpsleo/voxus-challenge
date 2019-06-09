@@ -5,11 +5,29 @@
       :type="'text'"
       :label="'Nome completo'" />
 
-    <BaseInput
-      v-model="form.phone"
-      v-mask="'(##) #####-####'"
-      :type="'tel'"
-      :label="'Telefone'" />
+    <div class="select-flag">
+      <Multiselect
+        v-model="form.country"
+        :options="form.countryOptions"
+        :searchable="false"
+        :show-labels="false">
+        <template slot="singleLabel" slot-scope="props">
+          <i :class="props.option.flag"></i>
+        </template>
+
+        <template slot="option" slot-scope="props">
+          <i :class="props.option.flag"></i>
+
+          <span>{{ props.option.title }}</span>
+        </template>
+      </Multiselect>
+
+      <BaseInput
+        v-model="form.phone"
+        v-mask="'(##) #####-####'"
+        :type="'tel'"
+        :label="'Telefone'" />
+    </div>
     
     <BaseInput
       v-model="form.email"
@@ -30,6 +48,7 @@
       v-model="form.spent"
       :options="form.spentOptions"
       :searchable="false"
+      :show-labels="false"
       placeholder="Verba mensal em mídia" />
 
     <div class="bottom">
@@ -67,6 +86,17 @@ export default {
   data: () => ({
     form: {
       name: '',
+      country: {
+        title: 'Brasil',
+        flag: 'flag-brazil'
+      },
+      countryOptions: [
+        { title: 'Brasil', flag: 'flag-brazil' },
+        { title: 'Dinamarca', flag: 'flag-denmark' },
+        { title: 'Espanha', flag: 'flag-spain' },
+        { title: 'Reino Unido', flag: 'flag-united-kingdom' },
+        { title: 'Estados Unidos', flag: 'flag-united-states' }
+      ],
       phone: '',
       email: '',
       company: '',
@@ -106,6 +136,11 @@ export default {
     box-shadow: 0px 4px 40px rgba(116, 130, 150, .2);
 
     @include media-query('greaterThan', medium) { padding: 1.6rem 10rem 5rem; }
+
+    > .select-flag {
+      display: grid;
+      grid-template-columns: 4rem auto;
+    }
 
     > .bottom {
       padding: 0 1rem;
