@@ -14,8 +14,7 @@
 export default {
   props: {
     label: String,
-    type: String,
-    name: String
+    type: String
   },
   data: () => ({
     focused: false

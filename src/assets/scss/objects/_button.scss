@@ -24,7 +24,7 @@
     }
 
     &.-disabled {
-      cursor: initial;
+      pointer-events: none;
       background-color: transparent;
       color: map-get($green-color, normal);
       border: 1px solid map-get($green-color, normal);
