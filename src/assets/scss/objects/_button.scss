@@ -1,0 +1,25 @@
+.btn {
+  all: unset;
+
+  display: block;
+  padding: .75rem 1.25rem;
+
+  cursor: pointer;
+  border-radius: 3px;
+  text-align: center;
+  font: {
+    size: .9rem;
+    weight: bold;
+  };
+
+  &.-primary {
+    color: #FFF;
+    transition: background-color .3s;
+    background-color: map-get($green-color, normal);
+
+    &:hover {
+      transition: background-color .3s;
+      background-color: map-get($green-color, lighten);
+    }
+  }
+}

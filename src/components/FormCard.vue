@@ -1,6 +1,6 @@
 <template>
   <div class="form-card">
-    hello world
+    <button class="btn -primary">Experimentar gratuitamente</button>
   </div>
 </template>
 
