@@ -6,17 +6,25 @@
       :label="item.label" />
 
     <div class="bottom">
-      <button class="btn -primary" @click="submitForm">Experimentar gratuitamente</button>
+      <button
+        v-if="!wasSubmitted"
+        @click="submitForm"
+        class="btn -primary">Experimentar gratuitamente</button>
+      <button
+        v-else
+        class="btn -primary -disabled">Obrigado</button>
 
       <transition name="fade">
-        <div class="feedback" v-if="submitted">Entraremos em contato em até 24hs úteis.</div>
+        <p
+          v-if="submitted"
+          class="feedback">Entraremos em contato em até 24hs úteis.</p>
       </transition>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 import BaseInput from './BaseInput'
 
@@ -28,13 +36,20 @@ export default {
       { label: 'Endereço de e-mail' },
       { label: 'Nome da empresa' },
       { label: 'URL do site' }
-    ]
+    ],
+    wasSubmitted: false
   }),
   components: {
     BaseInput
   },
   computed: mapState(['submitted']),
-  methods: mapActions(['submitForm'])
+  methods: {
+    submitForm(target) {
+      this.$store.dispatch('submitForm')
+
+      this.wasSubmitted = true
+    }
+  }
 }
 </script>
 
