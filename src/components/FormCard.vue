@@ -6,12 +6,12 @@
       v-model="form.name"
       v-validate="'required'"
       :type="'text'"
-      :name="'name'"
+      :name="'nome completo'"
       :label="'Nome completo'">
 
       <template v-slot:error>
-        <span v-if="errors.has('name')" class="form-error">
-          {{ errors.first('name') }}
+        <span v-if="errors.has('nome completo')" class="form-error">
+          {{ errors.first('nome completo') }}
         </span>
       </template>
     </BaseInput>
@@ -38,12 +38,12 @@
         v-mask="'(##) #####-####'"
         v-validate="'required'"
         :type="'tel'"
-        :name="'phone'"
+        :name="'telefone'"
         :label="'Telefone'">
 
         <template v-slot:error>
-          <span v-if="errors.has('phone')" class="form-error">
-            {{ errors.first('phone') }}
+          <span v-if="errors.has('telefone')" class="form-error">
+            {{ errors.first('telefone') }}
           </span>
         </template>
       </BaseInput>
@@ -53,12 +53,12 @@
       v-model="form.email"
       v-validate="'required|email'"
       :type="'email'"
-      :name="'email'"
+      :name="'e-mail'"
       :label="'Endereço de e-mail'">
 
       <template v-slot:error>
-        <span v-if="errors.has('email')" class="form-error">
-          {{ errors.first('email') }}
+        <span v-if="errors.has('e-mail')" class="form-error">
+          {{ errors.first('e-mail') }}
         </span>
       </template>
     </BaseInput>
@@ -67,12 +67,12 @@
       v-model="form.company"
       v-validate="'required'"
       :type="'text'"
-      :name="'company'"
+      :name="'nome da empresa'"
       :label="'Nome da empresa'">
 
       <template v-slot:error>
-        <span v-if="errors.has('company')" class="form-error">
-          {{ errors.first('company') }}
+        <span v-if="errors.has('nome da empresa')" class="form-error">
+          {{ errors.first('nome da empresa') }}
         </span>
       </template>
     </BaseInput>
@@ -81,12 +81,12 @@
       v-model="form.website"
       v-validate="'required|url'"
       :type="'text'"
-      :name="'website'"
+      :name="'URL do site'"
       :label="'URL do site'">
 
       <template v-slot:error>
-        <span v-if="errors.has('website')" class="form-error">
-          {{ errors.first('website') }}
+        <span v-if="errors.has('URL do site')" class="form-error">
+          {{ errors.first('URL do site') }}
         </span>
       </template>
     </BaseInput>
@@ -98,11 +98,11 @@
         :options="options.spent"
         :searchable="false"
         :show-labels="false"
-        name="spent"
+        name="verba mensal em mídia"
         placeholder="Verba mensal em mídia" />
       
-      <span v-if="errors.has('spent')" class="form-error">
-        {{ errors.first('spent') }}
+      <span v-if="errors.has('verba mensal em mídia')" class="form-error">
+        {{ errors.first('verba mensal em mídia') }}
       </span>
     </div>
 
@@ -179,8 +179,6 @@ export default {
           this.$store.dispatch('submitForm')
 
           this.wasSubmitted = true
-
-          console.log(this.form)
         }
       })
     }
