@@ -30,18 +30,13 @@ Todos os assets e design das interações tanto mobile, quanto desktop, estão c
 ---
 
 ## Project setup
-```
-yarn install
-```
+```yarn``` or ```npm install```
+
 ### Compiles and hot-reloads for development
-```
-yarn serve
-```
+```yarn serve``` or ```npm run serve```
 
 ### Compiles and minifies for production
-```
-yarn build
-```
+```yarn build``` or ```npm run build```
 
 ---
 
