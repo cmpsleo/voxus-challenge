@@ -25,6 +25,8 @@ export default {
     },
     onBlur(value) {
       if(!value.length) this.focused = false
+
+      this.$emit('input', value)
     }
   }
 }

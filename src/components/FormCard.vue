@@ -1,14 +1,9 @@
 <template>
   <div class="form-card">
-    <BaseInput :label="'Nome completo'" />
-
-    <BaseInput :label="'Telefone'" />
-
-    <BaseInput :label="'Endereço de e-mail'" />
-
-    <BaseInput :label="'Nome da empresa'" />
-
-    <BaseInput :label="'URL do site'" />
+    <BaseInput
+      v-for="(item, index) in schema"
+      :key="index"
+      :label="item.label" />
 
     <div class="actions">
       <button class="btn -primary">Experimentar gratuitamente</button>
@@ -20,6 +15,15 @@
 import BaseInput from './BaseInput'
 
 export default {
+  data: () => ({
+    schema: [
+      { label: 'Nome completo' },
+      { label: 'Telefone' },
+      { label: 'Endereço de e-mail' },
+      { label: 'Nome da empresa' },
+      { label: 'URL do site' }
+    ]
+  }),
   components: {
     BaseInput
   }
