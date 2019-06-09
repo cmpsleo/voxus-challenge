@@ -2,14 +2,15 @@
   <div class="form-group" :class="focus">
     <label class="label">{{ label }}</label>
     
-    <input class="field" type="text" @focus="onFocus" @blur="onBlur($event.target.value)">
+    <input class="field" :type="type" @focus="onFocus" @blur="onBlur($event.target.value)">
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    label: String
+    label: String,
+    type: String
   },
   data: () => ({
     focused: false

@@ -1,9 +1,30 @@
 <template>
   <div class="form-card">
     <BaseInput
-      v-for="(item, index) in schema"
-      :key="index"
-      :label="item.label" />
+      v-model="form.name"
+      :type="'text'"
+      :label="'Nome completo'" />
+
+    <BaseInput
+      v-model="form.phone"
+      v-mask="'(##) #####-####'"
+      :type="'tel'"
+      :label="'Telefone'" />
+    
+    <BaseInput
+      v-model="form.email"
+      :type="'email'"
+      :label="'Endereço de e-mail'" />
+
+    <BaseInput
+      v-model="form.company"
+      :type="'text'"
+      :label="'Nome da empresa'" />
+
+    <BaseInput
+      v-model="form.website"
+      :type="'url'"
+      :label="'URL do site'" />
 
     <div class="bottom">
       <button
@@ -26,17 +47,19 @@
 <script>
 import { mapState } from 'vuex'
 
+import { mask } from 'vue-the-mask'
+
 import BaseInput from './BaseInput'
 
 export default {
+  directives: { mask },
   data: () => ({
-    schema: [
-      { label: 'Nome completo' },
-      { label: 'Telefone' },
-      { label: 'Endereço de e-mail' },
-      { label: 'Nome da empresa' },
-      { label: 'URL do site' }
-    ],
+    form: {
+      name: '',
+      phone: '',
+      email: '',
+      company: ''
+    },
     wasSubmitted: false
   }),
   components: {
