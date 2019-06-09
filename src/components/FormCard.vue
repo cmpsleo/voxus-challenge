@@ -26,6 +26,12 @@
       :type="'url'"
       :label="'URL do site'" />
 
+    <Multiselect
+      v-model="form.spent"
+      :options="form.spentOptions"
+      :searchable="false"
+      placeholder="Verba mensal em mídia" />
+
     <div class="bottom">
       <button
         v-if="!wasSubmitted"
@@ -48,23 +54,34 @@
 import { mapState } from 'vuex'
 
 import { mask } from 'vue-the-mask'
+import Multiselect from 'vue-multiselect'
 
 import BaseInput from './BaseInput'
 
 export default {
   directives: { mask },
+  components: {
+    BaseInput,
+    Multiselect
+  },
   data: () => ({
     form: {
       name: '',
       phone: '',
       email: '',
-      company: ''
+      company: '',
+      spent: '',
+      spentOptions: [
+        '<= R$ 5.000',
+        '>= R$ 5.001 e <= R$ 30.000',
+        '>= R$ 30.001 e <= R$ 100.000',
+        '>= R$ 100.001 e <= R$ 500.000',
+        '>= R$ 500.001',
+        'Não se aplica'
+      ]
     },
     wasSubmitted: false
   }),
-  components: {
-    BaseInput
-  },
   computed: mapState(['submitted']),
   methods: {
     submitForm(target) {
@@ -76,7 +93,7 @@ export default {
 }
 </script>
 
-
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style lang="scss" scoped>
   .form-card {
     position: relative;
@@ -88,7 +105,7 @@ export default {
     background-color: #FFF;
     box-shadow: 0px 4px 40px rgba(116, 130, 150, .2);
 
-    @include media-query('greaterThan', medium) { padding: 1.6rem 10.6rem 5rem; }
+    @include media-query('greaterThan', medium) { padding: 1.6rem 10rem 5rem; }
 
     > .bottom {
       padding: 0 1rem;
