@@ -1,0 +1,16 @@
+.form-error {
+  position: absolute;
+  bottom: -17px;
+  left: 0;
+  z-index: 10;
+
+  padding: .2rem 1rem;
+
+  color: #FFF;
+  background-color: #F0175C;
+  border-radius: 0 0 3px 3px;
+  font: {
+    weight: 500;
+    size: .625rem;
+  };
+}

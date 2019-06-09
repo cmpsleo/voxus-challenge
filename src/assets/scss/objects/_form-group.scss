@@ -4,7 +4,7 @@
   position: relative;
 
   display: block;
-  padding-bottom: 2rem;
+  margin-bottom: 2rem;
 
   &.-active {
     > .label {
@@ -21,6 +21,7 @@
     position: absolute;
     top: 12px;
     left: 1rem;
+    z-index: 30;
 
     pointer-events: none;
     transition: .2s $easing;
@@ -28,6 +29,9 @@
   }
 
   > .field {
+    position: relative;
+    z-index: 20;
+
     width: 100%;
     padding: .75rem 1rem;
 

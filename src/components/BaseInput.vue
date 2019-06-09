@@ -4,9 +4,12 @@
     
     <input
       :type="type"
+      :name="name"
       @focus="onFocus"
       @blur="onBlur($event.target.value)"
       class="field" />
+
+    <slot name="error"></slot>
   </div>
 </template>
 
@@ -14,7 +17,8 @@
 export default {
   props: {
     label: String,
-    type: String
+    type: String,
+    name: String
   },
   data: () => ({
     focused: false

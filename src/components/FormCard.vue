@@ -4,8 +4,17 @@
     class="form-card">
     <BaseInput
       v-model="form.name"
+      v-validate="'required'"
       :type="'text'"
-      :label="'Nome completo'" />
+      :name="'name'"
+      :label="'Nome completo'">
+
+      <template v-slot:error>
+        <span v-if="errors.has('name')" class="form-error">
+          {{ errors.first('name') }}
+        </span>
+      </template>
+    </BaseInput>
 
     <div class="select-flag">
       <Multiselect
@@ -27,31 +36,75 @@
       <BaseInput
         v-model="form.phone"
         v-mask="'(##) #####-####'"
+        v-validate="'required'"
         :type="'tel'"
-        :label="'Telefone'" />
+        :name="'phone'"
+        :label="'Telefone'">
+
+        <template v-slot:error>
+          <span v-if="errors.has('phone')" class="form-error">
+            {{ errors.first('phone') }}
+          </span>
+        </template>
+      </BaseInput>
     </div>
     
     <BaseInput
       v-model="form.email"
+      v-validate="'required|email'"
       :type="'email'"
-      :label="'Endereço de e-mail'" />
+      :name="'email'"
+      :label="'Endereço de e-mail'">
+
+      <template v-slot:error>
+        <span v-if="errors.has('email')" class="form-error">
+          {{ errors.first('email') }}
+        </span>
+      </template>
+    </BaseInput>
 
     <BaseInput
       v-model="form.company"
+      v-validate="'required'"
       :type="'text'"
-      :label="'Nome da empresa'" />
+      :name="'company'"
+      :label="'Nome da empresa'">
+
+      <template v-slot:error>
+        <span v-if="errors.has('company')" class="form-error">
+          {{ errors.first('company') }}
+        </span>
+      </template>
+    </BaseInput>
 
     <BaseInput
       v-model="form.website"
-      :type="'url'"
-      :label="'URL do site'" />
+      v-validate="'required|url'"
+      :type="'text'"
+      :name="'website'"
+      :label="'URL do site'">
 
-    <Multiselect
-      v-model="form.spent"
-      :options="options.spent"
-      :searchable="false"
-      :show-labels="false"
-      placeholder="Verba mensal em mídia" />
+      <template v-slot:error>
+        <span v-if="errors.has('website')" class="form-error">
+          {{ errors.first('website') }}
+        </span>
+      </template>
+    </BaseInput>
+
+    <div class="select-group">
+      <Multiselect
+        v-model="form.spent"
+        v-validate="'required'"
+        :options="options.spent"
+        :searchable="false"
+        :show-labels="false"
+        name="spent"
+        placeholder="Verba mensal em mídia" />
+      
+      <span v-if="errors.has('spent')" class="form-error">
+        {{ errors.first('spent') }}
+      </span>
+    </div>
 
     <div class="bottom">
       <button
@@ -112,18 +165,27 @@ export default {
       phone: '',
       email: '',
       company: '',
+      website: '',
       spent: ''
     },
     wasSubmitted: false
   }),
   computed: mapState(['submitted']),
   methods: {
-    submitForm(target) {
-      this.$store.dispatch('submitForm')
+    submitForm() {
+      // this.$store.dispatch('submitForm')
 
-      this.wasSubmitted = true
+      // this.wasSubmitted = true
 
-      console.log(this.form)
+      // console.log(this.form)
+      
+      this.$validator.validate().then(valid => {
+        if(valid) {
+          console.log('yep')
+        } else {
+          console.log('nop')
+        }
+      })
     }
   }
 }

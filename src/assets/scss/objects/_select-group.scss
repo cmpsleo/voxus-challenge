@@ -1,0 +1,5 @@
+.select-group {
+  position: relative;
+
+  > .multiselect { z-index: 20; }
+}
