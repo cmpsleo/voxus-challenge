@@ -12,10 +12,7 @@
 
     @include media-query('greaterThan', medium) { margin-bottom: 4.5rem; }
 
-    @include media-query('lessThan', medium) {
-      margin-bottom: 3.5rem;
-      padding: 0 1rem;
-    }
+    @include media-query('lessThan', medium) { margin-bottom: 3.5rem; }
 
     > .title {
       padding-bottom: 1.1rem;
