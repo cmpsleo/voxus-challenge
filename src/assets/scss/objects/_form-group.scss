@@ -1,0 +1,46 @@
+.form-group {
+  $easing: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+  position: relative;
+
+  display: block;
+  padding-bottom: 2rem;
+
+  &.-active {
+    > .label {
+      top: -7px;
+
+      font-size: .875rem;
+      transition: .2s $easing;
+      background-color: #FFF;
+      box-shadow: 0 0 0 5px #FFF;
+    }
+  }
+
+  > .label {
+    position: absolute;
+    top: 12px;
+    left: 1rem;
+
+    pointer-events: none;
+    transition: .2s $easing;
+    color: rgba(45, 58, 64, .3);
+  }
+
+  > .field {
+    width: 100%;
+    padding: .75rem 1rem;
+
+    outline: none;
+    font-size: 1rem;
+    border-radius: 3px;
+    transition: border-color .3s;
+    color: map-get($gray-color, dark);
+    border: 1px solid rgba(116, 130, 150, .2);
+
+    &:focus {
+      border-color: $primary-color;
+      transition: border-color .3s;
+    }
+  }
+}
