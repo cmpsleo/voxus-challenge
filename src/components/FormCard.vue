@@ -1,5 +1,7 @@
 <template>
-  <div class="form-card">
+  <form
+    @submit.prevent="submitForm"
+    class="form-card">
     <BaseInput
       v-model="form.name"
       :type="'text'"
@@ -8,7 +10,7 @@
     <div class="select-flag">
       <Multiselect
         v-model="form.country"
-        :options="form.countryOptions"
+        :options="options.country"
         :searchable="false"
         :show-labels="false">
         <template slot="singleLabel" slot-scope="props">
@@ -46,7 +48,7 @@
 
     <Multiselect
       v-model="form.spent"
-      :options="form.spentOptions"
+      :options="options.spent"
       :searchable="false"
       :show-labels="false"
       placeholder="Verba mensal em mídia" />
@@ -54,7 +56,7 @@
     <div class="bottom">
       <button
         v-if="!wasSubmitted"
-        @click="submitForm"
+        type="submit"
         class="btn -primary">Experimentar gratuitamente</button>
       <button
         v-else
@@ -66,7 +68,7 @@
           class="feedback">Entraremos em contato em até 24hs úteis.</p>
       </transition>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -84,24 +86,15 @@ export default {
     Multiselect
   },
   data: () => ({
-    form: {
-      name: '',
-      country: {
-        title: 'Brasil',
-        flag: 'flag-brazil'
-      },
-      countryOptions: [
+    options: {
+      country: [
         { title: 'Brasil', flag: 'flag-brazil' },
         { title: 'Dinamarca', flag: 'flag-denmark' },
         { title: 'Espanha', flag: 'flag-spain' },
         { title: 'Reino Unido', flag: 'flag-united-kingdom' },
         { title: 'Estados Unidos', flag: 'flag-united-states' }
       ],
-      phone: '',
-      email: '',
-      company: '',
-      spent: '',
-      spentOptions: [
+      spent: [
         '<= R$ 5.000',
         '>= R$ 5.001 e <= R$ 30.000',
         '>= R$ 30.001 e <= R$ 100.000',
@@ -109,6 +102,17 @@ export default {
         '>= R$ 500.001',
         'Não se aplica'
       ]
+    },
+    form: {
+      name: '',
+      country: {
+        title: 'Brasil',
+        flag: 'flag-brazil'
+      },
+      phone: '',
+      email: '',
+      company: '',
+      spent: ''
     },
     wasSubmitted: false
   }),
@@ -118,6 +122,8 @@ export default {
       this.$store.dispatch('submitForm')
 
       this.wasSubmitted = true
+
+      console.log(this.form)
     }
   }
 }
